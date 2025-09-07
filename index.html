@@ -8,7 +8,9 @@
     body {
       margin: 0;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #0073e6, #00c6ff); /* Background color */
+      background: linear-gradient(135deg, #ff7eb3, #ff758c, #ff7eb3, #6a82fb, #00c6ff);
+      background-size: 400% 400%;
+      animation: gradientShift 12s ease infinite;
       color: #333;
       display: flex;
       justify-content: center;
@@ -16,11 +18,17 @@
       height: 100vh;
     }
 
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .container {
       background: rgba(255, 255, 255, 0.95);
       padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
       text-align: center;
       width: 100%;
       max-width: 500px;
@@ -101,8 +109,8 @@
 </head>
 <body>
   <div class="container">
-    <!-- Replace Oma’s (1).png with the actual file path or upload it to GitHub -->
-    <img src="Oma’s (1).png" alt="Oma's Academy Logo" class="logo">
+    <!-- Make sure logo.png is in the same folder or /images/logo.png if you use a folder -->
+    <img src="logo.png" alt="Oma's Academy Logo" class="logo">
     <h1>Oma's Academy</h1>
     <h3>Certificate Verification Portal</h3>
 
