@@ -112,7 +112,6 @@
         cohort: "Cohort 1",
         year: "2025",
         date: "Sept 2025",
-        certFile: "certificates/OAVAC1-2025-001.pdf"
       },
       "OAVAC1/2025/002": {
         name: "John Doe",
@@ -120,7 +119,6 @@
         cohort: "Cohort 1",
         year: "2025",
         date: "Sept 2025",
-        certFile: "certificates/OAVAC1-2025-002.pdf"
       }
     };
 
@@ -141,7 +139,7 @@
               <p><strong>Year:</strong> ${cert.year}</p>
               <p><strong>Date Issued:</strong> ${cert.date}</p>
               <p>This is to certify that <b>${cert.name}</b> has successfully participated in and completed the <b>${cert.course}</b> program under Oma’s Academy.</p>
-              <a href="${cert.certFile}" class="cert-link" target="_blank">⬇ Download Certificate</a>
+              
             </div>`;
         } else {
           result.innerHTML = `<div class="error-box">
