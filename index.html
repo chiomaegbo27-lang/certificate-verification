@@ -6,62 +6,103 @@
   <title>Oma's Academy | Certificate Verification</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f9fafb;
-      text-align: center;
-      padding: 40px;
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #0073e6, #00c6ff);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
+
     .container {
       background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      text-align: center;
+      width: 100%;
       max-width: 500px;
-      margin: auto;
+      animation: fadeIn 1.2s ease-in-out;
     }
-    h1 {
-      color: #2c3e50;
-      margin-bottom: 10px;
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    h3 {
-      color: #555;
-      margin-bottom: 20px;
-    }
-    input {
-      padding: 10px;
-      width: 70%;
-      border-radius: 6px;
-      border: 1px solid #ccc;
+
+    .logo {
+      width: 100px;
+      height: auto;
       margin-bottom: 15px;
     }
+
+    h1 {
+      color: #0073e6;
+      margin-bottom: 5px;
+    }
+
+    h3 {
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    input {
+      padding: 12px;
+      width: 80%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      font-size: 14px;
+      text-align: center;
+    }
+
     button {
-      padding: 10px 20px;
+      padding: 12px 24px;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       background: #0073e6;
       color: white;
       font-weight: bold;
       cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 14px;
     }
+
     button:hover {
       background: #005bb5;
     }
+
     #result {
       margin-top: 20px;
       font-size: 16px;
       font-weight: bold;
     }
-    .verified {
-      color: green;
+
+    .success-box {
+      background: #e6ffed;
+      border: 2px solid #28a745;
+      color: #155724;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
     }
-    .notfound {
-      color: red;
+
+    .error-box {
+      background: #ffe6e6;
+      border: 2px solid #dc3545;
+      color: #721c24;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <img src="https://via.placeholder.com/100" alt="Academy Logo" style="margin-bottom:15px;">
+    <!-- Replace logo.png with your actual academy logo -->
+    <img src="logo.png" alt="Academy Logo" class="logo">
     <h1>Oma's Academy</h1>
     <h3>Certificate Verification Portal</h3>
 
@@ -73,7 +114,7 @@
   </div>
 
   <script>
-    // Example student records - add all your students here
+    // Example student records - replace with your real database
     const certificates = {
       "OMA-001": "Chioma Egbo – Virtual Assistant Course – Sept 2025",
       "OMA-002": "John Doe – Virtual Assistant Course – Sept 2025",
@@ -83,11 +124,19 @@
     function verify() {
       const id = document.getElementById("certID").value.trim().toUpperCase();
       const result = document.getElementById("result");
-      if (certificates[id]) {
-        result.innerHTML = "✅ <span class='verified'>Verified:</span> " + certificates[id];
-      } else {
-        result.innerHTML = "❌ <span class='notfound'>Certificate not found.</span>";
-      }
+      result.innerHTML = "⏳ Checking...";
+
+      setTimeout(() => {
+        if (certificates[id]) {
+          result.innerHTML = `<div class="success-box">
+            ✅ Verified: ${certificates[id]}
+          </div>`;
+        } else {
+          result.innerHTML = `<div class="error-box">
+            ❌ Certificate not found. Please check the ID.
+          </div>`;
+        }
+      }, 800);
     }
   </script>
 </body>
