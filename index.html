@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Certificate Verification</title>
+</head>
+<body>
+  <h2>Certificate Verification Portal</h2>
+  <p>Enter your Certificate ID to verify:</p>
+  <input type="text" id="certID" placeholder="e.g. OMA-001">
+  <button onclick="verify()">Verify</button>
+  <p id="result"></p>
+
+  <script>
+    // Example student records
+    const certificates = {
+      "OMA-001": "Chioma Egbo - Virtual Assistant Course - Sept 2025",
+      "OMA-002": "John Doe - Virtual Assistant Course - Sept 2025",
+      "OMA-003": "Mary Jane - Virtual Assistant Course - Sept 2025"
+      // add all 1000 here
+    };
+
+    function verify() {
+      const id = document.getElementById("certID").value.trim();
+      const result = document.getElementById("result");
+      if (certificates[id]) {
+        result.innerHTML = "✅ Verified: " + certificates[id];
+      } else {
+        result.innerHTML = "❌ Certificate not found. Please check your ID.";
+      }
+    }
+  </script>
+</body>
+</html>
