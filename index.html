@@ -1,31 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Certificate Verification</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oma's Academy | Certificate Verification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      text-align: center;
+      padding: 40px;
+    }
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: auto;
+    }
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+    h3 {
+      color: #555;
+      margin-bottom: 20px;
+    }
+    input {
+      padding: 10px;
+      width: 70%;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #0073e6;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #005bb5;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .verified {
+      color: green;
+    }
+    .notfound {
+      color: red;
+    }
+  </style>
 </head>
 <body>
-  <h2>Certificate Verification Portal</h2>
-  <p>Enter your Certificate ID to verify:</p>
-  <input type="text" id="certID" placeholder="e.g. OMA-001">
-  <button onclick="verify()">Verify</button>
-  <p id="result"></p>
+  <div class="container">
+    <img src="https://via.placeholder.com/100" alt="Academy Logo" style="margin-bottom:15px;">
+    <h1>Oma's Academy</h1>
+    <h3>Certificate Verification Portal</h3>
+
+    <input type="text" id="certID" placeholder="Enter Certificate ID (e.g. OMA-001)">
+    <br>
+    <button onclick="verify()">Verify</button>
+
+    <div id="result"></div>
+  </div>
 
   <script>
-    // Example student records
+    // Example student records - add all your students here
     const certificates = {
-      "OMA-001": "Chioma Egbo - Virtual Assistant Course - Sept 2025",
-      "OMA-002": "John Doe - Virtual Assistant Course - Sept 2025",
-      "OMA-003": "Mary Jane - Virtual Assistant Course - Sept 2025"
-      // add all 1000 here
+      "OMA-001": "Chioma Egbo – Virtual Assistant Course – Sept 2025",
+      "OMA-002": "John Doe – Virtual Assistant Course – Sept 2025",
+      "OMA-003": "Mary Jane – Virtual Assistant Course – Sept 2025"
     };
 
     function verify() {
-      const id = document.getElementById("certID").value.trim();
+      const id = document.getElementById("certID").value.trim().toUpperCase();
       const result = document.getElementById("result");
       if (certificates[id]) {
-        result.innerHTML = "✅ Verified: " + certificates[id];
+        result.innerHTML = "✅ <span class='verified'>Verified:</span> " + certificates[id];
       } else {
-        result.innerHTML = "❌ Certificate not found. Please check your ID.";
+        result.innerHTML = "❌ <span class='notfound'>Certificate not found.</span>";
       }
     }
   </script>
